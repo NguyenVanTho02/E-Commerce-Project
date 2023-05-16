@@ -1,0 +1,48 @@
+----- Cài đặt và khởi tạo dự án -----
+1. npm init -y
+2. Trong file package thêm:
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+3. Cài các thư viện cần thiết: 
+    npm i express dotenv express-async-handler jsonwebtoken mongoose bcrypt
+4. Cài đặt thêm nodemon trong môi trường dev
+    npm i -d nodemon
+
+----- Thiết lập cấu trúc dự án & Cấu hình kết nối với db( mongo db ) -----
+1. Tạo các thứ mục ở src: config, models, controllers, routes, middlewares, ultils
+2. Trong thư mục config tạo: dbconnect.js ( để kết nối tới db )
+( Thêm thư viện hỗ trợ code nhanh models: gõ nhanh !mdbgum)
+
+----- Xử lý đăng kí -----
+1. Xử lý logic trong controllers
+2. Hash password với thư viện bcrypt
+
+----- Xử lý lỗi server -----
+1. Tạo file errorHandler.js trong thư mục middlewares và xử lý logic trong đó
+
+
+----- Reset mật khẩu gửi OTP về mail -----
+1. crypto
+2. key search "google app password"
+3. Cài thư viện npm i nodemailer
+4. link web FE: https://digital-world-2.myshopify.com/
+
+----- Thêm -----
+1. Xóa thư viện: npm uninstall tên
+2. Cần tìm hiểu thêm: Object.keys(), req.user
+3. Thao tác db với mongoose
+4. Gõ nhanh code trong models: // Phím tắt nhanh cho trang này: !mdgbum
+5. Thư viện tạo slug: npm slugify
+6. sort filter pagination mongodb: https://jeffdevslife.com/p/1-mongodb-query-of-advanced-filtering-sorting-limit-field-and-pagination-with-mongoose/
+7. populate mongoose // Liên kết các bảng với nhau
+8. asyncHandler
+9. reqest in express
+10. Thư viện hỗ trợ thanh toán online: npm stripe
+11. Xử lý upload ảnh
+    - Cloudinary
+    - Nguồn tham khảo: https://viblo.asia/p/tich-hop-cloud-services-cho-image-upload-trong-nodejs-va-react-web-app-yMnKM01a57P
+    
+12. populate in mongoose
+
+
+
