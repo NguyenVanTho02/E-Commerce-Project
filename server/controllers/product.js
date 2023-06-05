@@ -22,7 +22,7 @@ const getProduct = asyncHandler(async (req, res) => {
 // Filtering, sorting & pagination
 const getProducts = asyncHandler(async (req, res) => {
     const queries = { ...req.query }
-    // Tách các trường đặc biệt ra khỏi query
+    //Tách các trường đặc biệt ra khỏi query
     const excludeFields = ['limit', 'sort', 'page', 'fields']
     excludeFields.forEach(el => delete queries[el])
 
@@ -57,8 +57,8 @@ const getProducts = asyncHandler(async (req, res) => {
     const skip = (page - 1) * limit
     queryCommand.skip(skip).limit(limit)
 
-    // Execute query
-    // Số lượng sản phẩm thỏa mãn điều kiện !== số lượng sp trả về 1 lần gọi API
+    //Execute query
+    //Số lượng sản phẩm thỏa mãn điều kiện !== số lượng sp trả về 1 lần gọi API
     queryCommand.exec(async (err, response) => {
         if (err) throw new Error(err.message)
         const counts = await Product.find(formatedQueries).countDocuments()
@@ -69,7 +69,11 @@ const getProducts = asyncHandler(async (req, res) => {
             products: response ? response : 'Cannot get products',
         })
     })
+
+
 })
+
+
 const updateProduct = asyncHandler(async (req, res) => {
     const { pid } = req.params
     if (req.body && req.body.title) req.body.slug = slugify(req.body.title)

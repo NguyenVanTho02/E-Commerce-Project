@@ -1,0 +1,7 @@
+-------- Thư viện cần cài đặt --------
+- npm i react-router-dom redux-persist react-toastify moment
+
+
+-------- Kiến thức cần tìm hiểu thêm --------
+- Outlet trong react-router-dom
+- 
