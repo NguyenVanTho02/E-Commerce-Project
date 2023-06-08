@@ -4,7 +4,9 @@ import { Provider } from 'react-redux';
 import { store } from './store/redux';
 import App from './App';
 import './index.css';
-import {BrowserRouter} from 'react-router-dom'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { BrowserRouter } from 'react-router-dom'
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -13,7 +15,7 @@ root.render(
     <React.StrictMode>
         <Provider store={store}>
             <BrowserRouter >
-                <App/>
+                <App />
             </BrowserRouter>
         </Provider>
     </React.StrictMode>

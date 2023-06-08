@@ -43,6 +43,7 @@ const getProducts = asyncHandler(async (req, res) => {
     }
 
     // Fields limiting
+    // abc, def => [abc, def] => abc def
     if (req.query.fields) {
         const fields = req.query.fields.split(',').join(' ')
         queryCommand = queryCommand.select(fields)
