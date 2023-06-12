@@ -5,3 +5,5 @@
 -------- Kiến thức cần tìm hiểu thêm --------
 - Outlet trong react-router-dom
 - Rút ngắn tên ... ở cuối dòng: tailwindcss/line-clamp 
+- Trang animation: animista.net
+- Memo trong reactjs

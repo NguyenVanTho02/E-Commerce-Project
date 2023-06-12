@@ -62,11 +62,24 @@ const BestSeller = () => {
                     {products?.map((el) => (
                         <Product
                             key={el.id}
+                            pid={el.id}
                             productData={el}
                             isNew={activedTab === 1 ? false : true}
                         />
                     ))}
                 </Slider>
+            </div>
+            <div className="w-full flex gap-4 mt-4">
+                <img
+                    src="https://cdn.shopify.com/s/files/1/1903/4853/files/banner1-home2_2000x_crop_center.png?v=1613166657"
+                    alt="banner"
+                    className="flex-1 object-contain"
+                />
+                <img
+                    src="https://cdn.shopify.com/s/files/1/1903/4853/files/banner2-home2_2000x_crop_center.png?v=1613166657"
+                    alt="banner"
+                    className="flex-1 object-contain"
+                />
             </div>
         </div>
     );
