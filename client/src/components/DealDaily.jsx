@@ -1,12 +1,17 @@
 import React, { useState, useEffect, memo } from "react";
 import icons from "../ultils/icons";
 import { apiGetProducts } from "../apis/product";
-import { renderStarFromNumber, formatMoney } from "../ultils/helpers";
+import {
+    renderStarFromNumber,
+    formatMoney,
+    sencondsToHms,
+} from "../ultils/helpers";
 import { Countdown } from "./";
+import moment from "moment";
 
 const { AiFillStar, AiOutlineMenu } = icons;
 
-let idInterval
+let idInterval;
 
 const DealDaily = () => {
     const [dealDaily, setDealDaily] = useState(null);
@@ -23,9 +28,16 @@ const DealDaily = () => {
         });
         if (response.success) {
             setDealDaily(response.products[0]);
-            setHour(24);
-            setMinute(59);
-            setMinute(59);
+            const today = `${moment().format("MM/DD/YYYY")} 05:00:00`;
+            const seconds =
+                new Date(today).getTime() -
+                new Date().getTime() +
+                24 * 3600 * 1000;
+            const number = sencondsToHms(seconds);
+
+            setHour(number.h);
+            setMinute(number.m);
+            setMinute(number.s);
         } else {
             setHour(0);
             setMinute(59);
