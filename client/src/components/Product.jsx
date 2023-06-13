@@ -12,15 +12,15 @@ const Product = ({ productData, isNew }) => {
     const [isShowOption, setIsShowOption] = useState(false);
     return (
         <div className="w-full text-base px-[10px]">
-            <div 
+            <div
                 className="w-full border p-[15px] flex flex-col items-center"
-                onMouseEnter={e => {
-                    e.stopPropagation()
-                    setIsShowOption(true)
+                onMouseEnter={(e) => {
+                    e.stopPropagation();
+                    setIsShowOption(true);
                 }}
-                onMouseLeave={e => {
-                    e.stopPropagation()
-                    setIsShowOption(false)
+                onMouseLeave={(e) => {
+                    e.stopPropagation();
+                    setIsShowOption(false);
                 }}
             >
                 <div className="w-full relative">
@@ -47,7 +47,11 @@ const Product = ({ productData, isNew }) => {
                 </div>
                 <div className="flex flex-col gap-1 mt-[15px] items-start w-full">
                     <span className="flex h-4">
-                        {renderStarFromNumber(productData?.totalRatings)}
+                        {renderStarFromNumber(productData?.totalRatings)?.map(
+                            (el, index) => (
+                                <span key={index}>{el}</span>
+                            )
+                        )}
                     </span>
                     <span className="line-clamp-1">{productData?.title}</span>
                     <span>{`${formatMoney(productData?.price)} VND`}</span>

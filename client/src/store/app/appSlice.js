@@ -8,7 +8,7 @@ export const appSlice = createSlice({
         isLoading: false
     },
     reducers: {
-        
+
     },
     // Code logic xử lý async action
     extraReducers: (builder) => {
