@@ -5,11 +5,13 @@ import {
     BestSeller,
     DealDaily,
     FeatureProducts,
-    CustomSlider
+    CustomSlider,
 } from "../../components";
-
+import { useSelector } from "react-redux";
 
 const Home = () => {
+    const { newProducts } = useSelector((state) => state.products);
+    const { categories } = useSelector((state) => state.app);
     return (
         <>
             <div className="w-main flex">
@@ -30,8 +32,13 @@ const Home = () => {
                 <h3 className="text-[20px] font-semibold py-[15px] border-b-2 border-main">
                     NEW ARRIVALS
                 </h3>
-                <div className="w-full">
-                    <CustomSlider/>
+                <div className="mt-4 mx-[-10px]">
+                    <CustomSlider products={newProducts} />
+                </div>
+                <div className="my-8 w-full">
+                    <h3 className="text-[20px] font-semibold py-[15px] border-b-2 border-main">
+                        HOT COLLECTIONS
+                    </h3>
                 </div>
             </div>
             <div className="w-full h-[500px]"></div>
