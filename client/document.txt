@@ -7,3 +7,4 @@
 - Rút ngắn tên ... ở cuối dòng: tailwindcss/line-clamp 
 - Trang animation: animista.net
 - Memo trong reactjs
+- redux persist

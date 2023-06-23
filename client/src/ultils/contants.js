@@ -16,11 +16,11 @@ export const navigation = [
         id: 3,
         value: 'BLOGS',
         path: `/${path.BLOGS}`
-    },{
+    }, {
         id: 4,
         value: 'OUR SERVICES',
-        path: `/${path.OUR_SERVICE}`
-    },{
+        path: `/${path.OUR_SERVICES}`
+    }, {
         id: 5,
         value: 'FAQs',
         path: `/${path.FAQ}`
