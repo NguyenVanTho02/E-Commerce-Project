@@ -10,8 +10,8 @@ const register = asyncHandler(async (req, res) => {
     const { email, password, firstname, lastname } = req.body
     if (!email || !password || !lastname || !firstname)
         return res.status(400).json({
-            sucess: false,
-            mes: 'Missing inputs'
+            success: false,
+            mess: 'Missing inputs'
         })
 
     const user = await User.findOne({ email })
@@ -19,8 +19,8 @@ const register = asyncHandler(async (req, res) => {
     else {
         const newUser = await User.create(req.body)
         return res.status(200).json({
-            sucess: newUser ? true : false,
-            mes: newUser ? 'Register is successfully. Please go login~' : 'Something went wrong'
+            success: newUser ? true : false,
+            mess: newUser ? 'Register is successfully. Please go login~' : 'Something went wrong'
         })
     }
 })
@@ -31,8 +31,8 @@ const login = asyncHandler(async (req, res) => {
     const { email, password } = req.body
     if (!email || !password)
         return res.status(400).json({
-            sucess: false,
-            mes: 'Missing inputs'
+            success: false,
+            mess: 'Missing inputs'
         })
     // plain object
     const response = await User.findOne({ email })
@@ -49,7 +49,7 @@ const login = asyncHandler(async (req, res) => {
         // Lưu refresh token vào cookie
         res.cookie('refreshToken', newRefreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 })
         return res.status(200).json({
-            sucess: true,
+            success: true,
             accessToken,
             userData
         })
@@ -93,7 +93,7 @@ const logout = asyncHandler(async (req, res) => {
     })
     return res.status(200).json({
         success: true,
-        mes: 'Logout is done'
+        mess: 'Logout is done'
     })
 })
 // Client gửi email
@@ -137,7 +137,7 @@ const resetPassword = asyncHandler(async (req, res) => {
     await user.save()
     return res.status(200).json({
         success: user ? true : false,
-        mes: user ? 'Updated password' : 'Something went wrong'
+        mess: user ? 'Updated password' : 'Something went wrong'
     })
 })
 
