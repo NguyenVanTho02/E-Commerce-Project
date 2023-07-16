@@ -8,3 +8,5 @@
 - Trang animation: animista.net
 - Memo trong reactjs
 - redux persist
+- Hiện thống báo thành công hay thất bại - thư viện sweetalert2
+- Trang hiệu ứng: animista
