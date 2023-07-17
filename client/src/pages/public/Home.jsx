@@ -60,13 +60,14 @@ const Home = () => {
                                             </h4>
                                             <ul className="text-sm">
                                                 {el?.brand?.map((item) => (
-                                                    <span className="flex gap-1 items-center text-gray-500">
+                                                    <span
+                                                        key={item}
+                                                        className="flex gap-1 items-center text-gray-500"
+                                                    >
                                                         <IoIosArrowForward
                                                             size={14}
                                                         />
-                                                        <li key={item}>
-                                                            {item}
-                                                        </li>
+                                                        <li>{item}</li>
                                                     </span>
                                                 ))}
                                             </ul>
