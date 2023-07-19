@@ -4,7 +4,7 @@ const { verifyAccessToken, isAdmin } = require('../middlewares/verifyToken')
 
 
 router.post('/register', controller.register)
-router.get('/finalregister/:token', controller.finalRegister)
+router.put('/finalregister/:token', controller.finalRegister)
 router.post('/login', controller.login)
 // Thực hiện theo tuần tự từ trái qua phải, ( sử dụng để xử lý middleware )
 router.get('/current', verifyAccessToken, controller.getCurrent)

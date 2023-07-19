@@ -44,7 +44,7 @@ export const validate = (payload, setInvalidFields) => {
                 }
                 break;
             case 'password':
-                if (!arr[1].length < 6) {
+                if (arr[1].length < 6) {
                     invalids++
                     setInvalidFields(prev => [...prev, { name: arr[0], mes: 'Password minium 6 characters.' }])
                 }

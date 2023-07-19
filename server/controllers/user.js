@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken')
 const sendMail = require('../ultils/sendMail')
 const crypto = require('crypto')
 const makeToken = require('uniqid')
+const { btoa, atob } = require('buffer')
 
 // const register = asyncHandler(async (req, res) => {
 //     const { email, password, firstname, lastname } = req.body
@@ -37,35 +38,36 @@ const register = asyncHandler(async (req, res) => {
     if (user) throw new Error('User has existed')
     else {
         const token = makeToken()
-        res.cookie('dataregister', { ...req.body, token }, { httpOnly: true, maxAge: 15 * 60 * 1000 })
-        const html = `Xin vui lòng click vào link dưới đây để hoàn tất quá trình đăng ký.Link này sẽ hết hạn sau 15 phút kể từ bây giờ. 
-                <a href=${process.env.URL_SERVER}/api/user/finalregister/${token}>Click here</a>`
-
-        await sendMail({ email, html, subject: 'Hoàn tất đăng ký' })
+        const emailedited = btoa(email) + '@' + token
+        const newUser = await User.create({
+            email: emailedited, password, firstname, lastname, mobile
+        })
+        if (newUser) {
+            const html = `<h2>Register code: </h2></br><blockquote>${token}</blockquote>`
+            await sendMail({ email, html, subject: 'Config register account in Digital World' })
+        }
+        setTimeout(async () => {
+            await User.deleteOne({ email: emailedited })
+        }, [300000])
         return res.json({
-            success: true,
-            mes: 'Please check your email to active account'
+            success: newUser ? true : false,
+            mess: newUser ? 'Please check your email to active account' : 'Some went wrong, please try later'
         })
     }
 })
 
 const finalRegister = asyncHandler(async (req, res) => {
-    const cookie = req.cookies
+    // const cookie = req.cookies
     const { token } = req.params
-    if (!cookie || cookie?.dataregister?.token !== token) {
-        res.clearCookie('dataregister')
-        return res.redirect(`${process.env.CLIENT_URL}/finalregister/failed`)
+    const notActivedEmail = await User.findOne({ email: new RegExp(`${token}$`) })
+    if (notActivedEmail) {
+        notActivedEmail.email = atob(notActivedEmail?.email?.split('@')[0])
+        notActivedEmail.save()
     }
-    const newUser = await User.create({
-        email: cookie?.dataregister?.email,
-        password: cookie?.dataregister?.password,
-        mobile: cookie?.dataregister?.mobile,
-        firstname: cookie?.dataregister?.firstname,
-        lastname: cookie?.dataregister?.lastname,
+    return res.json({
+        success: notActivedEmail ? true : false,
+        mess: notActivedEmail ? 'Register is Successfully. Please go login' : 'Some went wrong, please try later'
     })
-    res.clearCookie('dataregister')
-    if (newUser) return res.redirect(`${process.env.CLIENT_URL}/finalregister/success`)
-    else return res.redirect(`${process.env.CLIENT_URL}/finalregister/failed`)
 })
 
 // Refresh token => Cấp mới access token
