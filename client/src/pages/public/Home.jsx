@@ -32,7 +32,7 @@ const Home = () => {
             <div className="my-8">
                 <FeatureProducts />
             </div>
-            <div className="my-8 w-full">
+            <div className="my-8 w-main">
                 <h3 className="text-[20px] font-semibold py-[15px] border-b-2 border-main">
                     NEW ARRIVALS
                 </h3>
@@ -78,7 +78,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className="my-8 w-full">
+            <div className="my-8 w-main">
                 <h3 className="text-[20px] font-semibold py-[15px] border-b-2 border-main">
                     BLOG POSTS
                 </h3>

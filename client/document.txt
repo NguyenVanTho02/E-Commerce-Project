@@ -11,3 +11,12 @@
 - Hiện thống báo thành công hay thất bại - thư viện sweetalert2
 - Trang hiệu ứng: animista
 - Cách tạo thanh chỉ dẫn vào các mục: Ví dụ: Trang chủ > điện thoại > iphone14: npm i use-react-router-breadcrumbs
+- Cách tạo hiệu ứng zoom ảnh: thư viện cần dùng là: react-image-magnify
+
+
+
+
+
+
+
+
